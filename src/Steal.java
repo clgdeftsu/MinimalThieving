@@ -45,7 +45,7 @@ public class Steal implements Strategy
                 {
                     return Players.getMyPlayer().getAnimation() != -1;
                 }
-            }, 2000);
+            }, 1000);
         }
     }
 
