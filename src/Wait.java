@@ -48,7 +48,7 @@ public class Wait implements Strategy
 
         if (Players.getMyPlayer().getAnimation() == -1)
         {
-            Time.sleep(250);
+            Time.sleep(500);
         }
     }
 }

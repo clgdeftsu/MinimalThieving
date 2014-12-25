@@ -113,24 +113,7 @@ public class Sell implements Strategy
             {
                 Item item = Inventory.getItems(itemId)[Inventory.getItems(itemId).length - 1];
 
-                double length = Inventory.getItems(itemId).length;
-
-                int j;
-
-                if (length / 10 < 1.1)
-                {
-                    j = 1;
-                }
-                else if (length / 10 < 2.1)
-                {
-                    j = 2;
-                }
-                else
-                {
-                    j = 3;
-                }
-
-                for (int i = 0; i < j; i++)
+                while (Inventory.getItems(itemId).length > 0)
                 {
                     Menu.sendAction(431, item.getId() - 1, item.getSlot(), 3823);
                     Time.sleep(500);
