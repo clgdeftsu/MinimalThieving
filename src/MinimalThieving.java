@@ -32,6 +32,8 @@ public class MinimalThieving extends Script implements Paintable, MessageListene
 
     public static String status = "";
 
+    private boolean showPaint = false;
+
     private int moneyGained;
     private int steals;
 
@@ -50,6 +52,8 @@ public class MinimalThieving extends Script implements Paintable, MessageListene
     @Override
     public boolean onExecute()
     {
+        showPaint = true;
+
         timer = new Timer();
 
         strategies.add(new Sell());
@@ -70,7 +74,11 @@ public class MinimalThieving extends Script implements Paintable, MessageListene
     @Override
     public void paint(Graphics g)
     {
-        g.drawImage(image, 548, 203, null);
+        if (showPaint)
+        {
+            g.drawImage(image, 548, 203, null);
+        }
+
 
         g.setFont(new Font("Helvetica", Font.PLAIN, 14));
         g.setColor(Color.BLACK);
@@ -148,6 +156,18 @@ public class MinimalThieving extends Script implements Paintable, MessageListene
             {
                 moneyGained += 20000;
                 steals++;
+            }
+
+            if (m.getMessage().contains("command does not exist"))
+            {
+                if (showPaint)
+                {
+                    showPaint = false;
+                }
+                else
+                {
+                    showPaint = true;
+                }
             }
         }
     }

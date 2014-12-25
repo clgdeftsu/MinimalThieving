@@ -9,7 +9,6 @@ import org.rev317.min.api.wrappers.SceneObject;
 public class Steal implements Strategy
 {
     private Stall foodStall = new Stall(4875, 1);
-    private Stall craftingStall = new Stall(4874, 30);
     private Stall generalStall = new Stall(4867, 60);
     private Stall magicStall = new Stall(4877, 65);
     private Stall scimitarStalll = new Stall(4878, 80);
@@ -53,14 +52,9 @@ public class Steal implements Strategy
     {
         int level = Skill.THIEVING.getLevel();
 
-        if (level < craftingStall.getRequiredLevel())
+        if (level < generalStall.getRequiredLevel())
         {
             return foodStall;
-        }
-        else if (level >= craftingStall.getRequiredLevel()
-                && level < generalStall.getRequiredLevel())
-        {
-            return craftingStall;
         }
         else if (level >= generalStall.getRequiredLevel()
                 && level < magicStall.getRequiredLevel())
