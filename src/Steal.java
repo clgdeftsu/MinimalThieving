@@ -8,10 +8,10 @@ import org.rev317.min.api.wrappers.SceneObject;
 
 public class Steal implements Strategy
 {
-    private Stall foodStall = new Stall("Food stall", 4875, 1);
-    private Stall generalStall = new Stall("General stall", 4876, 60);
-    private Stall magicStall = new Stall("Magic stall", 4877, 65);
-    private Stall scimitarStall = new Stall("Scimitar stall", 4878, 80);
+    private Stall foodStall = new Stall("food stall", 4875, 1);
+    private Stall generalStall = new Stall("general stall", 4876, 60);
+    private Stall magicStall = new Stall("magic stall", 4877, 65);
+    private Stall scimitarStall = new Stall("scimitar stall", 4878, 80);
 
     private SceneObject stall;
 

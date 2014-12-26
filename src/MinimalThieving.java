@@ -76,11 +76,15 @@ public class MinimalThieving extends Script implements Paintable, MessageListene
         if (showPaint)
         {
             g.drawImage(image, 548, 203, null);
+            g.setColor(Color.BLACK);
+        }
+        else
+        {
+            g.setColor(Color.WHITE);
         }
 
 
         g.setFont(new Font("Helvetica", Font.PLAIN, 14));
-        g.setColor(Color.BLACK);
 
         g.drawString("Time: " + timer.toString(), 560, 266);
 

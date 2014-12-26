@@ -54,6 +54,8 @@ public class Sell implements Strategy
 
             if (Game.getOpenInterfaceId() != 3824)
             {
+                MinimalThieving.status = "Trading npc";
+
                 banditLeader.interact(0);
 
                 Time.sleep(new SleepCondition()
@@ -68,6 +70,8 @@ public class Sell implements Strategy
 
             if (Game.getOpenInterfaceId() == 3824)
             {
+                MinimalThieving.status = "Selling items";
+
                 sellAllExcept(996);
 
                 Time.sleep(new SleepCondition()
