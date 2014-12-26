@@ -8,10 +8,10 @@ import org.rev317.min.api.wrappers.SceneObject;
 
 public class Steal implements Strategy
 {
-    private Stall foodStall = new Stall(4875, 1);
-    private Stall generalStall = new Stall(4867, 60);
-    private Stall magicStall = new Stall(4877, 65);
-    private Stall scimitarStalll = new Stall(4878, 80);
+    private Stall foodStall = new Stall("Food stall", 4875, 1);
+    private Stall generalStall = new Stall("General stall", 4876, 60);
+    private Stall magicStall = new Stall("Magic stall", 4877, 65);
+    private Stall scimitarStall = new Stall("Scimitar stall", 4878, 80);
 
     private SceneObject stall;
 
@@ -33,7 +33,7 @@ public class Steal implements Strategy
     {
         if (stall != null)
         {
-            MinimalThieving.status = "Thieving";
+            MinimalThieving.status = "Thieving " + getStall().getName();
 
             stall.interact(0);
 
@@ -62,13 +62,13 @@ public class Steal implements Strategy
             return generalStall;
         }
         else if (level >= magicStall.getRequiredLevel()
-                && level < scimitarStalll.getRequiredLevel())
+                && level < scimitarStall.getRequiredLevel())
         {
             return magicStall;
         }
         else
         {
-            return scimitarStalll;
+            return scimitarStall;
         }
     }
 }

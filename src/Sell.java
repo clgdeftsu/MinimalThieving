@@ -83,7 +83,7 @@ public class Sell implements Strategy
     }
 
     /**
-     * Deposits all items except the ones we specify in the parameter
+     * Sells all items except the ones we specify in the parameter
      * @param ids the ids of the items we don't want to deposit
      */
     public void sellAllExcept(int... ids)

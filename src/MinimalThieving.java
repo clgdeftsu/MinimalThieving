@@ -6,7 +6,6 @@ import org.parabot.environment.scripts.ScriptManifest;
 import org.parabot.environment.scripts.framework.Strategy;
 import org.rev317.min.api.events.MessageEvent;
 import org.rev317.min.api.events.listeners.MessageListener;
-import org.rev317.min.api.methods.Players;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
