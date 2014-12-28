@@ -19,13 +19,13 @@ import java.util.ArrayList;
         description = "Steals from the stalls at ::home in Ikov.",
         name = "MinimalThieving",
         servers = { "Ikov" },
-        version = 1.0)
+        version = 1.3)
 
 public class MinimalThieving extends Script implements Paintable, MessageListener
 {
     private final ArrayList<Strategy> strategies = new ArrayList<>();
 
-    private Timer timer;
+    public static Timer timer;
 
     private Image image = getImage("http://i.imgur.com/3WsDK8O.png");
 
@@ -67,8 +67,8 @@ public class MinimalThieving extends Script implements Paintable, MessageListene
     public void onFinish()
     {
         System.out.println("MinimalThieving ran for: " + timer.toString());
-        System.out.println("Money(hr): " + getMoney(moneyGained));
-        System.out.println("Steals(hr): " + getSteals(steals));
+        System.out.println("Money(hr): " + getMoney());
+        System.out.println("Steals(hr): " + getSteals());
     }
 
     @Override
@@ -84,26 +84,25 @@ public class MinimalThieving extends Script implements Paintable, MessageListene
             g.setColor(Color.WHITE);
         }
 
-
         g.setFont(new Font("Helvetica", Font.PLAIN, 14));
 
         g.drawString("Time: " + timer.toString(), 560, 266);
 
-        g.drawString("Money(hr): " + getMoney(moneyGained), 560, 316);
+        g.drawString("Money(hr): " + getMoney(), 560, 316);
 
-        g.drawString("Steals(hr): " + getSteals(steals), 560, 367);
+        g.drawString("Steals(hr): " + getSteals(), 560, 367);
 
         g.drawString(status, 15, 15);
     }
 
-    public String getMoney(int moneyGained)
+    public String getMoney()
     {
         int hourlyMoney = timer.getPerHour(moneyGained);
 
         return formatNumber(moneyGained) + "(" + formatNumber(hourlyMoney) + ")";
     }
 
-    public String getSteals(int steals)
+    public String getSteals()
     {
         int hourlySteals = timer.getPerHour(steals);
 

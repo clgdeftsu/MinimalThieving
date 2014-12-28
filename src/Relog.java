@@ -22,11 +22,13 @@ public class Relog implements Strategy
         {
             MinimalThieving.status = "Logging in";
 
-            Time.sleep(3000);
+            System.out.println("[" + MinimalThieving.timer.toString() + "]: Attempting to relog");
+
+            Time.sleep(5000);
 
             Keyboard.getInstance().clickKey(KeyEvent.VK_ENTER);
 
-            MinimalThieving.status = "Waiting for login";
+            MinimalThieving.status = "Waiting before login";
 
             Time.sleep(new SleepCondition()
             {
@@ -36,10 +38,17 @@ public class Relog implements Strategy
                     return isLoggedIn();
                 }
             }, 5000);
+
+            if (isLoggedIn())
+            {
+                MinimalThieving.status = "Waiting after login";
+
+                Time.sleep(4000);
+            }
         }
     }
 
-    public boolean isLoggedIn()
+    public static boolean isLoggedIn()
     {
         try
         {

@@ -109,7 +109,8 @@ public class Sell implements Strategy
             }
         }
 
-        while (!itemsToDeposit.isEmpty())
+        while (!itemsToDeposit.isEmpty()
+                && Relog.isLoggedIn())
         {
             int itemId = itemsToDeposit.pop();
 

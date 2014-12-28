@@ -13,14 +13,18 @@ public class Steal implements Strategy
     private Stall magicStall = new Stall("magic stall", 4877, 65);
     private Stall scimitarStall = new Stall("scimitar stall", 4878, 80);
 
-    private SceneObject stall;
+    private Stall stall;
+
+    private SceneObject stallObject;
 
     @Override
     public boolean activate()
     {
-        for (SceneObject so : SceneObjects.getNearest(getStall().getObjectId()))
+        stall = getStall();
+
+        for (SceneObject so : SceneObjects.getNearest(stall.getObjectId()))
         {
-            stall = so;
+            stallObject = so;
 
             return true;
         }
@@ -31,11 +35,11 @@ public class Steal implements Strategy
     @Override
     public void execute()
     {
-        if (stall != null)
+        if (stallObject != null)
         {
             MinimalThieving.status = "Thieving " + getStall().getName();
 
-            stall.interact(0);
+            stallObject.interact(0);
 
             Time.sleep(new SleepCondition()
             {
