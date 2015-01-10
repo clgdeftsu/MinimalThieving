@@ -12,15 +12,16 @@ public class Sell implements Strategy
 {
     private Npc banditLeader;
 
-    private int[] stolenItems = { 951, 1636, 1640, 1332 };
-    private int banditLeaderId = 1878;
+    private final int[] STOLEN_ITEMS = { 951, 1636, 1640, 1332 };
+
+    private final int BANDIT_LEADER_ID = 1878;
 
     @Override
     public boolean activate()
     {
         if (Inventory.getCount() >= 27)
         {
-            for (Npc n : Npcs.getNearest(banditLeaderId))
+            for (Npc n : Npcs.getNearest(BANDIT_LEADER_ID))
             {
                 banditLeader = n;
 
@@ -40,7 +41,7 @@ public class Sell implements Strategy
             {
                 MinimalThieving.status = "Making room in inventory";
 
-                Inventory.getItems(stolenItems)[0].drop();
+                Inventory.getItems(STOLEN_ITEMS)[0].drop();
 
                 Time.sleep(new SleepCondition()
                 {
@@ -88,7 +89,7 @@ public class Sell implements Strategy
 
     /**
      * Sells all items except the ones we specify in the parameter
-     * @param ids the ids of the items we don't want to deposit
+     * @param ids the ids of the items we don't want to sell
      */
     public void sellAllExcept(int... ids)
     {
@@ -110,7 +111,8 @@ public class Sell implements Strategy
         }
 
         while (!itemsToDeposit.isEmpty()
-                && Relog.isLoggedIn())
+                && Relog.isLoggedIn()
+                && Game.getOpenInterfaceId() == 3824)
         {
             int itemId = itemsToDeposit.pop();
 

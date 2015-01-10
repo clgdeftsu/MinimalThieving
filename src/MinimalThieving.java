@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.UUID;
 
 @ScriptManifest(author = "Minimal",
         category = Category.THIEVING,
@@ -35,18 +36,7 @@ public class MinimalThieving extends Script implements Paintable, MessageListene
 
     private int moneyGained;
     private int steals;
-
-    public Image getImage(String str)
-    {
-        try
-        {
-            return ImageIO.read(new URL(str));
-        }
-        catch(IOException e)
-        {
-            return null;
-        }
-    }
+    private int randoms;
 
     @Override
     public boolean onExecute()
@@ -55,7 +45,9 @@ public class MinimalThieving extends Script implements Paintable, MessageListene
 
         timer = new Timer();
 
+        strategies.add(new CreateAccount());
         strategies.add(new Relog());
+        strategies.add(new Teleport());
         strategies.add(new Sell());
         strategies.add(new Wait());
         strategies.add(new Steal());
@@ -66,9 +58,10 @@ public class MinimalThieving extends Script implements Paintable, MessageListene
     @Override
     public void onFinish()
     {
-        System.out.println("MinimalThieving ran for: " + timer.toString());
-        System.out.println("Money(hr): " + getMoney());
-        System.out.println("Steals(hr): " + getSteals());
+        System.out.println("Minimal Thieving ran for: " + timer.toString());
+        System.out.println("Money(hr): " + getPerHour(moneyGained));
+        System.out.println("Steals(hr): " + getPerHour(steals));
+        System.out.println("Randoms(hr): " + getPerHour(randoms));
     }
 
     @Override
@@ -88,42 +81,13 @@ public class MinimalThieving extends Script implements Paintable, MessageListene
 
         g.drawString("Time: " + timer.toString(), 560, 266);
 
-        g.drawString("Money(hr): " + getMoney(), 560, 316);
+        g.drawString("Money(hr): " + getPerHour(moneyGained), 560, 316);
 
-        g.drawString("Steals(hr): " + getSteals(), 560, 367);
+        g.drawString("Steals(hr): " + getPerHour(steals), 560, 366);
+
+        g.drawString("Randoms(hr): " + getPerHour(randoms), 560, 416);
 
         g.drawString(status, 15, 15);
-    }
-
-    public String getMoney()
-    {
-        int hourlyMoney = timer.getPerHour(moneyGained);
-
-        return formatNumber(moneyGained) + "(" + formatNumber(hourlyMoney) + ")";
-    }
-
-    public String getSteals()
-    {
-        int hourlySteals = timer.getPerHour(steals);
-
-        return formatNumber(steals) + "(" + formatNumber(hourlySteals) + ")";
-    }
-
-    public String formatNumber(double number)
-    {
-        DecimalFormat compact = new DecimalFormat("#,###.0");
-
-        if (number >= 1000000)
-        {
-            return compact.format(number / 1000000) + "M";
-        }
-        else if (number >= 1000
-                && number < 1000000)
-        {
-            return compact.format(number / 1000) + "K";
-        }
-
-        return "" + number;
     }
 
     @Override
@@ -161,6 +125,11 @@ public class MinimalThieving extends Script implements Paintable, MessageListene
                 steals++;
             }
 
+            if (m.getMessage().contains("anti-bot"))
+            {
+                randoms++;
+            }
+
             if (m.getMessage().contains("command does not exist"))
             {
                 if (showPaint)
@@ -172,6 +141,42 @@ public class MinimalThieving extends Script implements Paintable, MessageListene
                     showPaint = true;
                 }
             }
+        }
+    }
+
+    public String getPerHour(int number)
+    {
+        int hourlyNumber = timer.getPerHour(number);
+
+        return formatNumber(number) + "(" + formatNumber(hourlyNumber) + ")";
+    }
+
+    public String formatNumber(double number)
+    {
+        DecimalFormat compact = new DecimalFormat("#,###.0");
+
+        if (number >= 1000000)
+        {
+            return compact.format(number / 1000000) + "M";
+        }
+        else if (number >= 1000
+                && number < 1000000)
+        {
+            return compact.format(number / 1000) + "K";
+        }
+
+        return "" + number;
+    }
+
+    public Image getImage(String str)
+    {
+        try
+        {
+            return ImageIO.read(new URL(str));
+        }
+        catch(IOException e)
+        {
+            return null;
         }
     }
 }
