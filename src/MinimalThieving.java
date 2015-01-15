@@ -13,14 +13,13 @@ import java.io.IOException;
 import java.net.URL;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.UUID;
 
 @ScriptManifest(author = "Minimal",
         category = Category.THIEVING,
         description = "Steals from the stalls at ::home in Ikov.",
         name = "MinimalThieving",
         servers = { "Ikov" },
-        version = 1.3)
+        version = 1.4)
 
 public class MinimalThieving extends Script implements Paintable, MessageListener
 {
@@ -37,6 +36,7 @@ public class MinimalThieving extends Script implements Paintable, MessageListene
     private int moneyGained;
     private int steals;
     private int randoms;
+    public static int bans;
 
     @Override
     public boolean onExecute()
@@ -45,6 +45,7 @@ public class MinimalThieving extends Script implements Paintable, MessageListene
 
         timer = new Timer();
 
+        strategies.add(new QuestionSolver());
         strategies.add(new CreateAccount());
         strategies.add(new Relog());
         strategies.add(new Teleport());
@@ -62,6 +63,7 @@ public class MinimalThieving extends Script implements Paintable, MessageListene
         System.out.println("Money(hr): " + getPerHour(moneyGained));
         System.out.println("Steals(hr): " + getPerHour(steals));
         System.out.println("Randoms(hr): " + getPerHour(randoms));
+        System.out.println("Bans(hr): " + getPerHour(bans));
     }
 
     @Override
@@ -81,11 +83,13 @@ public class MinimalThieving extends Script implements Paintable, MessageListene
 
         g.drawString("Time: " + timer.toString(), 560, 266);
 
-        g.drawString("Money(hr): " + getPerHour(moneyGained), 560, 316);
+        g.drawString("Money(hr): " + getPerHour(moneyGained), 560, 306);
 
-        g.drawString("Steals(hr): " + getPerHour(steals), 560, 366);
+        g.drawString("Steals(hr): " + getPerHour(steals), 560, 346);
 
-        g.drawString("Randoms(hr): " + getPerHour(randoms), 560, 416);
+        g.drawString("Randoms(hr): " + getPerHour(randoms), 560, 386);
+
+        g.drawString("Bans(hr): " + getPerHour(bans), 560, 426);
 
         g.drawString(status, 15, 15);
     }

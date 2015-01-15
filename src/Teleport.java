@@ -2,18 +2,17 @@ import org.parabot.environment.api.utils.Time;
 import org.parabot.environment.scripts.framework.SleepCondition;
 import org.parabot.environment.scripts.framework.Strategy;
 import org.rev317.min.Loader;
-import org.rev317.min.api.methods.Game;
-import org.rev317.min.api.methods.Menu;
-import org.rev317.min.api.methods.Players;
-import org.rev317.min.api.methods.SceneObjects;
+import org.rev317.min.api.methods.*;
 
 public class Teleport implements Strategy
 {
+    private final int BANDIT_LEADER_ID = 1878;
+
     @Override
     public boolean activate()
     {
-        return SceneObjects.getNearest(Stall.getBestStall().getId()).length == 0
-                && Relog.isLoggedIn();
+        return Relog.isLoggedIn()
+                && Npcs.getNearest(BANDIT_LEADER_ID).length == 0;
     }
 
     @Override

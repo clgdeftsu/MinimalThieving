@@ -18,6 +18,8 @@ public class CreateAccount implements Strategy
     @Override
     public void execute()
     {
+        MinimalThieving.bans++;
+
         randomUsername = UUID.randomUUID().toString().replaceAll("-", "").substring(0, 11);
 
         System.out.println("Your new username is " + randomUsername);
