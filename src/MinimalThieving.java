@@ -45,7 +45,6 @@ public class MinimalThieving extends Script implements Paintable, MessageListene
 
         timer = new Timer();
 
-        strategies.add(new QuestionSolver());
         strategies.add(new CreateAccount());
         strategies.add(new Relog());
         strategies.add(new Teleport());

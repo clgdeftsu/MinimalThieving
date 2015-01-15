@@ -32,8 +32,8 @@
       <file leaf-file-name="MinimalThieving.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/MinimalThieving.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.61044616" vertical-offset="510" max-vertical-offset="3247">
-              <caret line="63" column="64" selection-start-line="63" selection-start-column="64" selection-end-line="63" selection-end-column="64" />
+            <state vertical-scroll-proportion="0.16648531" vertical-offset="204" max-vertical-offset="3230">
+              <caret line="21" column="21" selection-start-line="21" selection-start-column="21" selection-end-line="21" selection-end-column="21" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -162,8 +162,8 @@
         <option value="$PROJECT_DIR$/src/Randoms.java" />
         <option value="$PROJECT_DIR$/src/QuestionSolver.java" />
         <option value="$PROJECT_DIR$/src/CreateAccount.java" />
-        <option value="$PROJECT_DIR$/src/MinimalThieving.java" />
         <option value="$PROJECT_DIR$/src/Teleport.java" />
+        <option value="$PROJECT_DIR$/src/MinimalThieving.java" />
       </list>
     </option>
   </component>
@@ -576,12 +576,12 @@
       <workItem from="1420792153947" duration="3079000" />
       <workItem from="1420843584232" duration="2301000" />
       <workItem from="1420922101137" duration="4308000" />
-      <workItem from="1421352946066" duration="686000" />
+      <workItem from="1421352946066" duration="887000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="43583000" />
+    <option name="totallyTimeSpent" value="43784000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -1199,8 +1199,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/MinimalThieving.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.61044616" vertical-offset="510" max-vertical-offset="3247">
-          <caret line="63" column="64" selection-start-line="63" selection-start-column="64" selection-end-line="63" selection-end-column="64" />
+        <state vertical-scroll-proportion="0.16648531" vertical-offset="204" max-vertical-offset="3230">
+          <caret line="21" column="21" selection-start-line="21" selection-start-column="21" selection-end-line="21" selection-end-column="21" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
